@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday Ojasvi</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+<!-- 💖 Heart Particles -->
+<div id="tsparticles"></div>
+
+<!-- ☁️ Floating Clouds -->
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<div class="cloud cloud3"></div>
+<div class="cloud cloud4"></div>
+
+<!-- 🎈 Hot Air Balloon -->
+<img src="balloon.png" alt="Hot Air Balloon" class="hot-air-balloon" />
+
+<!-- 🪽 Flying Heart Birds -->
+<div class="heart-bird bird1">💗</div>
+<div class="heart-bird bird2">💗</div>
+<div class="heart-bird bird3">💗</div>
+
+<!-- 💌 Welcome Content -->
+<div class="welcome-box">
+  <img src="golden-dog.png" alt="Golden Retriever" class="dog" />
+  <h1 class="typewriter">Happy Birthday, Ojasvi! 🎂</h1>
+  <p class="typewriter-text">I love you more than words can ever say 💖</p>
+  <a href="gallery.html" class="enter-btn shimmer" onclick="celebrate()">Enter</a>
+</div>
+
+<!-- 🎶 Background Music -->
+<audio autoplay loop>
+  <source src="mia-sebastian-theme.mp3" type="audio/mp3" />
+</audio>
+
+<!-- 🌟 Sparkle Sound -->
+<audio id="twinkle-sound" autoplay>
+  <source src="twinkle.mp3" type="audio/mp3" />
+</audio>
+
+<!-- ❤️ Floating Hearts -->
+<script>
+tsParticles.load("tsparticles", {
+  fullScreen: { enable: true },
+  particles: {
+    number: { value: 20 },
+    shape: {
+      type: "char",
+      character: {
+        value: ["❤️"],
+        font: "Verdana",
+        weight: "400"
+      }
+    },
+    size: { value: 18 },
+    move: {
+      enable: true,
+      speed: 1,
+      direction: "top",
+      outModes: { default: "out" }
+    },
+    opacity: {
+      value: 1,
+      anim: { enable: true, speed: 0.5, opacity_min: 0.3 }
+    }
+  },
+  background: { color: "#fff7f0" }
+});
+</script>
+
+<!-- 🎉 Confetti -->
+<script>
+function celebrate() {
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+  setTimeout(() => {
+    window.location.href = 'gallery.html';
+  }, 500);
+}
+</script>
+
+</body>
+</html>
