@@ -54,31 +54,44 @@ body, html {
 /* 🪽 Flying Heart Birds */
 .heart-bird {
   position: absolute;
-  font-size: 28px;
+  width: 60px;
   z-index: 3;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
-.heart-bird::before {
-  content: "🪽";
+.bird1 {
+  top: 60%;
+  left: -80px;
+  animation: birdFly1 40s linear infinite;
 }
 
-.bird1 { top: 60%; left: -20px; animation: birdFly1 40s linear infinite; }
-.bird2 { top: 40%; left: -50px; animation: birdFly2 50s linear infinite; }
-.bird3 { top: 20%; left: -30px; animation: birdFly3 45s linear infinite; }
+.bird2 {
+  top: 40%;
+  left: -100px;
+  animation: birdFly2 50s linear infinite;
+}
+
+.bird3 {
+  top: 20%;
+  left: -60px;
+  animation: birdFly3 45s linear infinite;
+}
 
 @keyframes birdFly1 {
   0% { transform: translateX(0); }
   100% { transform: translateX(120vw); }
 }
+
 @keyframes birdFly2 {
   0% { transform: translateX(0); }
   100% { transform: translateX(130vw); }
 }
+
 @keyframes birdFly3 {
   0% { transform: translateX(0); }
   100% { transform: translateX(110vw); }
 }
+
 
 /* 🐶 Doggo Bounce + Tail Wiggle */
 .dog-wrapper {
