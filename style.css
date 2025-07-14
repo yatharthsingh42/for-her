@@ -58,12 +58,26 @@ body, html {
   z-index: 3;
   opacity: 0.8;
 }
+
 .heart-bird::before {
   content: "🪽";
 }
-.bird1 { top: 60%; left: -20px; animation: birdFly1 40s linear infinite; }
-.bird2 { top: 40%; left: -50px; animation: birdFly2 50s linear infinite; }
-.bird3 { top: 20%; left: -30px; animation: birdFly3 45s linear infinite; }
+
+.bird1 {
+  top: 60%;
+  left: -20px;
+  animation: birdFly1 40s linear infinite;
+}
+.bird2 {
+  top: 40%;
+  left: -50px;
+  animation: birdFly2 50s linear infinite;
+}
+.bird3 {
+  top: 20%;
+  left: -30px;
+  animation: birdFly3 45s linear infinite;
+}
 
 @keyframes birdFly1 {
   0% { transform: translateX(0); }
@@ -78,26 +92,23 @@ body, html {
   100% { transform: translateX(110vw); }
 }
 
-/* 🐶 Dog Animations */
-.dog-wrapper {
-  animation: floatIn 2s ease-out forwards;
-  transform-origin: center;
+/* 🐶 Dog */
+.welcome-box {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .dog {
   width: 120px;
-  animation: wagTail 1s infinite alternate;
-  transform-origin: bottom right;
+  animation: bounce 2s infinite;
 }
 
-@keyframes floatIn {
-  0% { transform: translateY(-150px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes wagTail {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(5deg); }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 /* ✍️ Typing Header */
@@ -158,6 +169,7 @@ body, html {
   position: relative;
   overflow: hidden;
 }
+
 .shimmer::after {
   content: '';
   position: absolute;
@@ -168,15 +180,9 @@ body, html {
   background: linear-gradient(to right, transparent, rgba(255,255,255,0.5), transparent);
   animation: shimmer 2s infinite;
 }
-@keyframes shimmer {
-  100% { left: 125%; }
-}
 
-/* 📦 Welcome Box Layout */
-.welcome-box {
-  position: relative;
-  z-index: 4;
-  text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
+@keyframes shimmer {
+  100% {
+    left: 125%;
+  }
 }
