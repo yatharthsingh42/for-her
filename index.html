@@ -21,17 +21,25 @@
       position: relative;
     }
 
+    #stars-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, #1a0033, #000);
+      pointer-events: none;
+    }
+
     #tsparticles {
       position: fixed;
       width: 100vw;
       height: 100vh;
-      z-index: 0;
+      z-index: 1;
+      background: transparent !important;
     }
 
-    /* ☁️ Floating Clouds */
-    
-
-    /* 🐦 Flying Birds */
     .bird {
       position: absolute;
       width: 40px;
@@ -56,7 +64,6 @@
       100% { transform: translateX(110vw); }
     }
 
-    /* 🐶 Dog */
     .dog-wrapper {
       margin-top: 20px;
       animation: floatIn 2s ease-out forwards;
@@ -81,7 +88,6 @@
       100% { transform: rotate(5deg); }
     }
 
-    /* 🎂 Title */
     #birthdayText {
       z-index: 4;
       font-size: 3rem;
@@ -98,7 +104,6 @@
       text-shadow: 0 0 15px #ffb6c1;
     }
 
-    /* 🎀 Start Button */
     .start-btn {
       margin-top: 30px;
       padding: 15px 30px;
@@ -122,30 +127,15 @@
       transform: scale(0.95);
       box-shadow: 0 0 15px #ffaad4;
     }
-    #stars-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -2;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(ellipse at center, #1a0033, #000);
-  pointer-events: none;
-}
-
   </style>
 </head>
 <body>
-  
- 
 
-  <!-- 🌸 Particles -->
+  <!-- 🌌 Star Canvas -->
+  <canvas id="stars-bg"></canvas>
+
+  <!-- 💖 Particles -->
   <div id="tsparticles"></div>
-
-  <!-- ☁️ Clouds -->
-  <div class="cloud cloud1"></div>
-  <div class="cloud cloud2"></div>
-  <div class="cloud cloud3"></div>
 
   <!-- 🐦 Birds -->
   <img src="bird1.png" alt="bird" class="bird bird1" />
@@ -166,7 +156,7 @@
   <!-- 🔉 Bark -->
   <audio id="barkSound" src="bark.mp3" preload="auto"></audio>
 
-  <!-- 🎉 Confetti Hover -->
+  <!-- ✨ Confetti Hover -->
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       const birthdayText = document.getElementById('birthdayText');
@@ -220,11 +210,11 @@
           anim: { enable: true, speed: 0.5, opacity_min: 0.3 }
         }
       },
-     // background: { color: "#fffaf7"}
+      background: { color: "#fffaf7" }
     });
   </script>
 
-  <!-- 🎵 Start Experience -->
+  <!-- 🎵 Music + Redirection -->
   <script>
     function startExperience() {
       const audio = new Audio('mia-sebastian-theme.mp3');
@@ -235,64 +225,64 @@
     }
   </script>
 
-<script>
-  const canvas = document.getElementById("stars-bg");
-  const ctx = canvas.getContext("2d");
+  <!-- 🌟 Star Animation Script -->
+  <script>
+    const canvas = document.getElementById("stars-bg");
+    const ctx = canvas.getContext("2d");
 
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
 
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
 
-  let stars = [];
-  for (let i = 0; i < 80; i++) {
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 1.5 + 0.5,
-      alpha: Math.random(),
-      dx: Math.random() * 0.3,
-      dy: Math.random() * 0.3
-    });
-  }
+    let stars = [];
+    for (let i = 0; i < 120; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5 + 0.5,
+        alpha: Math.random() * 0.6 + 0.4,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5
+      });
+    }
 
-  function drawStars() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < stars.length; i++) {
-      const s = stars[i];
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
-      ctx.fill();
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < stars.length; i++) {
+        const s = stars[i];
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${s.alpha})`;
+        ctx.fill();
 
-      s.x += s.dx;
-      s.y += s.dy;
+        s.x += s.dx;
+        s.y += s.dy;
+        if (s.x < 0 || s.x > canvas.width) s.dx *= -1;
+        if (s.y < 0 || s.y > canvas.height) s.dy *= -1;
 
-      if (s.x < 0 || s.x > canvas.width) s.dx *= -1;
-      if (s.y < 0 || s.y > canvas.height) s.dy *= -1;
-
-      for (let j = i + 1; j < stars.length; j++) {
-        const dx = s.x - stars[j].x;
-        const dy = s.y - stars[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 100) {
-          ctx.beginPath();
-          ctx.moveTo(s.x, s.y);
-          ctx.lineTo(stars[j].x, stars[j].y);
-          ctx.strokeStyle = "rgba(255,255,255,0.08)";
-          ctx.stroke();
+        for (let j = i + 1; j < stars.length; j++) {
+          const dx = s.x - stars[j].x;
+          const dy = s.y - stars[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(s.x, s.y);
+            ctx.lineTo(stars[j].x, stars[j].y);
+            ctx.strokeStyle = "rgba(255,255,255,0.1)";
+            ctx.lineWidth = 0.3;
+            ctx.stroke();
+          }
         }
       }
+      requestAnimationFrame(drawStars);
     }
-    requestAnimationFrame(drawStars);
-  }
 
-  drawStars();
-</script>
-  
- <canvas id="stars-bg"></canvas>
+    drawStars();
+  </script>
+
 </body>
 </html>
