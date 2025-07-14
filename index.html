@@ -28,6 +28,77 @@
       z-index: 0;
     }
 
+    /* ☁️ Floating Clouds */
+    .cloud {
+      position: absolute;
+      background: radial-gradient(ellipse at center, #fff 0%, #f8f8f8 100%);
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: floatClouds linear infinite;
+      z-index: 0;
+    }
+
+    .cloud1 { width: 200px; height: 80px; top: 10%; left: -20%; animation-duration: 60s; }
+    .cloud2 { width: 250px; height: 100px; top: 30%; left: -30%; animation-duration: 80s; }
+    .cloud3 { width: 150px; height: 60px; top: 50%; left: -25%; animation-duration: 70s; }
+
+    @keyframes floatClouds {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(150vw); }
+    }
+
+    /* 🪽 Birds */
+    .heart-bird {
+      position: absolute;
+      font-size: 26px;
+      opacity: 0.7;
+      z-index: 1;
+    }
+    .heart-bird::before {
+      content: "🪽";
+    }
+    .bird1 { top: 60%; left: -40px; animation: birdFly1 40s linear infinite; }
+    .bird2 { top: 35%; left: -70px; animation: birdFly2 50s linear infinite; }
+    .bird3 { top: 20%; left: -90px; animation: birdFly3 45s linear infinite; }
+
+    @keyframes birdFly1 {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(130vw); }
+    }
+    @keyframes birdFly2 {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(150vw); }
+    }
+    @keyframes birdFly3 {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(110vw); }
+    }
+
+    /* 🐶 Dog */
+    .dog-wrapper {
+      margin-top: 20px;
+      animation: floatIn 2s ease-out forwards;
+      transform-origin: center;
+    }
+
+    .dog {
+      width: 120px;
+      animation: wagTail 1s infinite alternate;
+      transform-origin: bottom right;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    @keyframes floatIn {
+      0% { transform: translateY(-150px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes wagTail {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(5deg); }
+    }
+
     #birthdayText {
       z-index: 2;
       font-size: 3rem;
@@ -74,16 +145,36 @@
   <!-- 🌸 Background Particles -->
   <div id="tsparticles"></div>
 
+  <!-- ☁️ Clouds -->
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+
+  <!-- 🪽 Birds -->
+  <div class="heart-bird bird1"></div>
+  <div class="heart-bird bird2"></div>
+  <div class="heart-bird bird3"></div>
+
+  <!-- 🐶 Dog Animation -->
+  <div class="dog-wrapper">
+    <img src="golden-retriever.png" alt="Dog" class="dog" id="dogImage" />
+  </div>
+
   <!-- 🎂 Birthday Message -->
   <h1 id="birthdayText">Happy Birthday, My Love 🎂</h1>
 
   <!-- 🎀 Button to Continue -->
   <button class="start-btn" onclick="startExperience()">Click to Begin the Magic 💖</button>
 
+  <!-- 🔉 Bark Sound -->
+  <audio id="barkSound" src="bark.mp3" preload="auto"></audio>
+
   <!-- 🎉 Confetti on Hover -->
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       const birthdayText = document.getElementById('birthdayText');
+      const dogImage = document.getElementById('dogImage');
+      const barkSound = document.getElementById('barkSound');
 
       birthdayText.addEventListener('mouseenter', () => {
         confetti({
@@ -97,6 +188,11 @@
 
       birthdayText.addEventListener('mouseleave', () => {
         birthdayText.classList.remove('hovered');
+      });
+
+      dogImage.addEventListener('mouseenter', () => {
+        barkSound.currentTime = 0;
+        barkSound.play();
       });
     });
   </script>
@@ -131,15 +227,14 @@
     });
   </script>
 
-  <!-- 🎵 Music and Redirect on Click -->
+  <!-- 🎵 Music and Redirect -->
   <script>
     function startExperience() {
       const audio = new Audio('mia-sebastian-theme.mp3');
       audio.play();
-
       setTimeout(() => {
         window.location.href = "gallery.html";
-      }, 1000); // 1s delay so music starts before redirect
+      }, 1000);
     }
   </script>
 
