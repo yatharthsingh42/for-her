@@ -19,63 +19,34 @@
 <div class="cloud cloud3"></div>
 <div class="cloud cloud4"></div>
 
-<!-- 🎈 Floating Balloons -->
+<!-- 🎈 Balloons -->
 <div class="balloon balloon1">🎈</div>
 <div class="balloon balloon2">🎈</div>
 <div class="balloon balloon3">🎈</div>
 
-<!-- 💞 Heart Particles -->
+<!-- 💫 Heart Particles -->
 <div id="tsparticles"></div>
 
-<!-- 🖼️ Gallery Title -->
-<h1 class="gallery-title">Some Moments With You 💫</h1>
+<h1 class="gallery-title">My Visions of You 💫</h1>
 
-<!-- 📷 Gallery Grid -->
-<div class="gallery-container">
-  <div class="gallery-item" onclick="openModal('img1.jpg', 'Your smile lit up that day ✨')">
-    <img src="img1.jpg" alt="Memory 1">
-    <div class="caption">Your smile lit up that day ✨</div>
-  </div>
-  <div class="gallery-item" onclick="openModal('img2.jpg', 'Forever etched in my heart 💖')">
-    <img src="img2.jpg" alt="Memory 2">
-    <div class="caption">Forever etched in my heart 💖</div>
-  </div>
-  <div class="gallery-item" onclick="openModal('img3.jpg', 'This moment lives in my soul')">
-    <img src="img3.jpg" alt="Memory 3">
-    <div class="caption">This moment lives in my soul</div>
-  </div>
-  <div class="gallery-item" onclick="openModal('img4.jpg', 'You made even this ordinary day magical ✿')">
-    <img src="img4.jpg" alt="Memory 4">
-    <div class="caption">You made even this ordinary day magical ✿</div>
-  </div>
-  <div class="gallery-item" onclick="openModal('img5.jpg', 'Time slowed down here')">
-    <img src="img5.jpg" alt="Memory 5">
-    <div class="caption">Time slowed down here</div>
-  </div>
-  <div class="gallery-item" onclick="openModal('img6.jpg', 'Everything about this still gives me butterflies')">
-    <img src="img6.jpg" alt="Memory 6">
-    <div class="caption">Still gives me butterflies</div>
-  </div>
-  <div class="gallery-item" onclick="openModal('img7.jpg', 'Eyes that see right through me 💫')">
-    <img src="img7.jpg" alt="Memory 7">
-    <div class="caption">Eyes that see right through me 💫</div>
-  </div>
-  <div class="gallery-item" onclick="openModal('img8.jpg', 'You were the art and the artist both 🎨')">
-    <img src="img8.jpg" alt="Memory 8">
-    <div class="caption">You were the art and the artist 🎨</div>
+<!-- 🖼️ 3D Rotating Carousel -->
+<div class="carousel-wrapper">
+  <div class="carousel" id="carousel">
+    <figure><img src="img1.jpg" alt="1"><figcaption>Your smile lit up that day ✨</figcaption></figure>
+    <figure><img src="img2.jpg" alt="2"><figcaption>Forever etched in my heart 💖</figcaption></figure>
+    <figure><img src="img3.jpg" alt="3"><figcaption>This moment lives in my soul</figcaption></figure>
+    <figure><img src="img4.jpg" alt="4"><figcaption>You made the day magical ✿</figcaption></figure>
+    <figure><img src="img5.jpg" alt="5"><figcaption>Time slowed down here</figcaption></figure>
+    <figure><img src="img6.jpg" alt="6"><figcaption>Still gives me butterflies</figcaption></figure>
+    <figure><img src="img7.jpg" alt="7"><figcaption>Your eyes see through me 💫</figcaption></figure>
+    <figure><img src="img8.jpg" alt="8"><figcaption>Art and artist both 🎨</figcaption></figure>
   </div>
 </div>
 
-<!-- 💖 Final Rotating Image Section -->
+<!-- 💖 Final Rotating Picture -->
 <div class="final-image-container">
-  <h2 style="text-align: center; color: #aa678f; margin-bottom: 20px;">My Visions of You 💕</h2>
+  <h2 style="text-align: center; color: #aa678f; margin-bottom: 20px;">The One I Keep Close 💕</h2>
   <img src="final.jpg" alt="The best moment">
-</div>
-
-<!-- ✨ Image Modal -->
-<div id="modal" class="modal" onclick="closeModal()">
-  <img id="modal-img" src="" alt="">
-  <p id="modal-caption"></p>
 </div>
 
 <!-- ✍️ Prose Section -->
@@ -90,29 +61,8 @@
   </div>
 </section>
 
-<!-- 💫 Sparkle & Modal Logic -->
+<!-- ✨ Sparkle & Particles -->
 <script>
-  function openModal(imgSrc, caption) {
-    const modal = document.getElementById('modal');
-    document.getElementById('modal-img').src = imgSrc;
-    document.getElementById('modal-caption').textContent = caption;
-    modal.style.display = "flex";
-
-    // ✨ Sparkles
-    for (let i = 0; i < 30; i++) {
-      let sparkle = document.createElement("div");
-      sparkle.className = "sparkle";
-      sparkle.style.left = Math.random() * 100 + "vw";
-      sparkle.style.top = Math.random() * 100 + "vh";
-      document.body.appendChild(sparkle);
-      setTimeout(() => sparkle.remove(), 1000);
-    }
-  }
-
-  function closeModal() {
-    document.getElementById('modal').style.display = "none";
-  }
-
   tsParticles.load("tsparticles", {
     fullScreen: { enable: true },
     particles: {
@@ -139,6 +89,20 @@
     },
     background: { color: "#fffaf7" }
   });
+</script>
+
+<script>
+  // Auto rotate carousel
+  const carousel = document.getElementById("carousel");
+  let angle = 0;
+
+  function rotateCarousel() {
+    angle += 0.3;
+    carousel.style.transform = `translateZ(-430px) rotateY(${angle}deg)`;
+    requestAnimationFrame(rotateCarousel);
+  }
+
+  rotateCarousel();
 </script>
 
 </body>
