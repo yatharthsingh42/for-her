@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Memories</title>
+  <link rel="stylesheet" href="gallery.css" />
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+</head>
+<body>
+
+<!-- 🎶 Background Music -->
+<audio id="bg-music" autoplay loop>
+  <source src="mia-sebastian-theme.mp3" type="audio/mp3" />
+</audio>
+
+<!-- ☁️ Clouds -->
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<div class="cloud cloud3"></div>
+<div class="cloud cloud4"></div>
+
+<!-- 🎈 Balloons -->
+<div class="balloon balloon1">🎈</div>
+<div class="balloon balloon2">🎈</div>
+<div class="balloon balloon3">🎈</div>
+
+<!-- 🫧 Heart Particles -->
+<div id="tsparticles"></div>
+
+<h1 class="gallery-title">Some Moments With You 💫</h1>
+
+<div class="gallery-container">
+  <div class="gallery-item" onclick="openModal('img1.jpg', 'Your smile lit up that day ✨')">
+    <img src="img1.jpg" alt="Memory 1">
+    <div class="caption">Your smile lit up that day ✨</div>
+  </div>
+  <div class="gallery-item" onclick="openModal('img2.jpg', 'Forever etched in my heart 💖')">
+    <img src="img2.jpg" alt="Memory 2">
+    <div class="caption">Forever etched in my heart 💖</div>
+  </div>
+  <div class="gallery-item" onclick="openModal('img3.jpg', 'This moment lives in my soul')">
+    <img src="img3.jpg" alt="Memory 3">
+    <div class="caption">This moment lives in my soul</div>
+  </div>
+  <!-- Add more images as needed -->
+</div>
+
+<!-- 🖼️ Image Modal -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <img id="modal-img" src="" alt="">
+  <p id="modal-caption"></p>
+</div>
+
+<!-- ✍️ Prose Section -->
+<section class="prose-section">
+  <h2>Words I’ve Written for You ✍️</h2>
+  <div class="prose-scroll">
+    <p>Every moment with you is a beautiful touch on my soul that I wish to feel again.</p>
+    <p>All these lights and I still beg to see your face among them...</p>
+    <p>To die in your arms surrounded by memories of us is a death far too sweet.</p>
+    <p>Blessed be the sun that kisses your skin every morning...</p>
+    <p>The day I comprehend what you mean to me is the day maybe my brains lay scattered all over this floor.</p>
+    <!-- Add more prose as needed -->
+  </div>
+</section>
+
+<script>
+  function openModal(imgSrc, caption) {
+    const modal = document.getElementById('modal');
+    document.getElementById('modal-img').src = imgSrc;
+    document.getElementById('modal-caption').textContent = caption;
+    modal.style.display = "flex";
+
+    // ✨ Sparkles
+    for (let i = 0; i < 30; i++) {
+      let sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.style.left = Math.random() * 100 + "vw";
+      sparkle.style.top = Math.random() * 100 + "vh";
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
+    }
+  }
+
+  function closeModal() {
+    document.getElementById('modal').style.display = "none";
+  }
+
+  tsParticles.load("tsparticles", {
+    fullScreen: { enable: true },
+    particles: {
+      number: { value: 15 },
+      shape: {
+        type: "char",
+        character: {
+          value: ["💖", "💘"],
+          font: "Verdana",
+          weight: "400"
+        }
+      },
+      size: { value: 22 },
+      move: {
+        enable: true,
+        speed: 1,
+        direction: "top",
+        outModes: { default: "out" }
+      },
+      opacity: {
+        value: 1,
+        anim: { enable: true, speed: 0.5, opacity_min: 0.3 }
+      }
+    },
+    background: { color: "#fffaf7" }
+  });
+</script>
+
+</body>
+</html>
