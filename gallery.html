@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Our Memories</title>
+  <meta charset="UTF-8" />
+  <title>My Visions of You</title>
   <link rel="stylesheet" href="gallery.css" />
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 </head>
@@ -19,16 +19,18 @@
 <div class="cloud cloud3"></div>
 <div class="cloud cloud4"></div>
 
-<!-- 🎈 Balloons -->
+<!-- 🎈 Floating Balloons -->
 <div class="balloon balloon1">🎈</div>
 <div class="balloon balloon2">🎈</div>
 <div class="balloon balloon3">🎈</div>
 
-<!-- 🫧 Heart Particles -->
+<!-- 💞 Heart Particles -->
 <div id="tsparticles"></div>
 
+<!-- 🖼️ Gallery Title -->
 <h1 class="gallery-title">Some Moments With You 💫</h1>
 
+<!-- 📷 Gallery Grid -->
 <div class="gallery-container">
   <div class="gallery-item" onclick="openModal('img1.jpg', 'Your smile lit up that day ✨')">
     <img src="img1.jpg" alt="Memory 1">
@@ -42,10 +44,35 @@
     <img src="img3.jpg" alt="Memory 3">
     <div class="caption">This moment lives in my soul</div>
   </div>
-  <!-- Add more images as needed -->
+  <div class="gallery-item" onclick="openModal('img4.jpg', 'You made even this ordinary day magical ✿')">
+    <img src="img4.jpg" alt="Memory 4">
+    <div class="caption">You made even this ordinary day magical ✿</div>
+  </div>
+  <div class="gallery-item" onclick="openModal('img5.jpg', 'Time slowed down here')">
+    <img src="img5.jpg" alt="Memory 5">
+    <div class="caption">Time slowed down here</div>
+  </div>
+  <div class="gallery-item" onclick="openModal('img6.jpg', 'Everything about this still gives me butterflies')">
+    <img src="img6.jpg" alt="Memory 6">
+    <div class="caption">Still gives me butterflies</div>
+  </div>
+  <div class="gallery-item" onclick="openModal('img7.jpg', 'Eyes that see right through me 💫')">
+    <img src="img7.jpg" alt="Memory 7">
+    <div class="caption">Eyes that see right through me 💫</div>
+  </div>
+  <div class="gallery-item" onclick="openModal('img8.jpg', 'You were the art and the artist both 🎨')">
+    <img src="img8.jpg" alt="Memory 8">
+    <div class="caption">You were the art and the artist 🎨</div>
+  </div>
 </div>
 
-<!-- 🖼️ Image Modal -->
+<!-- 💖 Final Rotating Image Section -->
+<div class="final-image-container">
+  <h2 style="text-align: center; color: #aa678f; margin-bottom: 20px;">My Visions of You 💕</h2>
+  <img src="final.jpg" alt="The best moment">
+</div>
+
+<!-- ✨ Image Modal -->
 <div id="modal" class="modal" onclick="closeModal()">
   <img id="modal-img" src="" alt="">
   <p id="modal-caption"></p>
@@ -60,10 +87,10 @@
     <p>To die in your arms surrounded by memories of us is a death far too sweet.</p>
     <p>Blessed be the sun that kisses your skin every morning...</p>
     <p>The day I comprehend what you mean to me is the day maybe my brains lay scattered all over this floor.</p>
-    <!-- Add more prose as needed -->
   </div>
 </section>
 
+<!-- 💫 Sparkle & Modal Logic -->
 <script>
   function openModal(imgSrc, caption) {
     const modal = document.getElementById('modal');
