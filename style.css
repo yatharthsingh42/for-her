@@ -4,7 +4,7 @@ body, html {
   height: 100%;
   overflow: hidden;
   font-family: 'Georgia', serif;
-  background: linear-gradient(to bottom, #fff7f0, #ffe1ea);
+  background: transparent;
   cursor: url('paw-cursor.png'), auto;
 }
 
