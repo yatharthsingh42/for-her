@@ -269,3 +269,61 @@ body {
 .carousel figure:nth-child(6) { transform: rotateY(225deg); }
 .carousel figure:nth-child(7) { transform: rotateY(270deg); }
 .carousel figure:nth-child(8) { transform: rotateY(315deg); }
+
+/* 💌 Floating Love Note */
+.floating-note {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #aa678f;
+  background: #fff1f7;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-top: 15px;
+  box-shadow: 0 0 15px rgba(255, 192, 203, 0.3);
+  animation: floatNote 5s ease-in-out infinite alternate;
+}
+
+@keyframes floatNote {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* 🎮 Carousel Controls */
+.carousel-controls {
+  margin-top: 20px;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.carousel-controls button {
+  background: #fddde6;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: #aa678f;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(255, 182, 193, 0.4);
+  transition: transform 0.3s;
+}
+
+.carousel-controls button:hover {
+  transform: scale(1.1);
+  background: #ffe4f1;
+  cursor: pointer;
+}
+
+/* 🌟 Star trail on Final Image */
+.final-image-container img:hover {
+  animation: twinkleStar 1s ease-in-out;
+  box-shadow: 0 0 25px #ff99c9, 0 0 35px #ffd6ec;
+}
+
+@keyframes twinkleStar {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.3); }
+  100% { filter: brightness(1); }
+}
+
