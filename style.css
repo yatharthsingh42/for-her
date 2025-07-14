@@ -35,7 +35,7 @@ body, html {
   100% { transform: translateX(150vw); }
 }
 
-/* 🎈 Hot Air Balloon Animation */
+/* 🎈 Hot Air Balloon Animation (Optional) */
 .hot-air-balloon {
   position: absolute;
   width: 80px;
@@ -63,21 +63,9 @@ body, html {
   content: "🪽";
 }
 
-.bird1 {
-  top: 60%;
-  left: -20px;
-  animation: birdFly1 40s linear infinite;
-}
-.bird2 {
-  top: 40%;
-  left: -50px;
-  animation: birdFly2 50s linear infinite;
-}
-.bird3 {
-  top: 20%;
-  left: -30px;
-  animation: birdFly3 45s linear infinite;
-}
+.bird1 { top: 60%; left: -20px; animation: birdFly1 40s linear infinite; }
+.bird2 { top: 40%; left: -50px; animation: birdFly2 50s linear infinite; }
+.bird3 { top: 20%; left: -30px; animation: birdFly3 45s linear infinite; }
 
 @keyframes birdFly1 {
   0% { transform: translateX(0); }
@@ -92,23 +80,28 @@ body, html {
   100% { transform: translateX(110vw); }
 }
 
-/* 🐶 Dog */
-.welcome-box {
-  position: relative;
-  z-index: 4;
-  text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
+/* 🐶 Doggo Bounce + Tail Wiggle */
+.dog-wrapper {
+  margin-top: 20px;
+  animation: floatIn 2s ease-out forwards;
+  transform-origin: center;
+  z-index: 3;
 }
 
 .dog {
   width: 120px;
-  animation: bounce 2s infinite;
+  animation: floatIn 3s ease-out forwards, wagTail 1s infinite alternate;
+  transform-origin: bottom right;
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+@keyframes floatIn {
+  0% { transform: translateY(-150px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes wagTail {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(5deg); }
 }
 
 /* ✍️ Typing Header */
@@ -169,7 +162,6 @@ body, html {
   position: relative;
   overflow: hidden;
 }
-
 .shimmer::after {
   content: '';
   position: absolute;
@@ -182,7 +174,20 @@ body, html {
 }
 
 @keyframes shimmer {
-  100% {
-    left: 125%;
-  }
+  100% { left: 125%; }
+}
+
+/* 📦 Center Box */
+.welcome-box {
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* 🎉 Hover Confetti */
+#birthdayText.hovered {
+  transform: scale(1.05);
+  text-shadow: 0 0 15px #ffb6c1;
 }
