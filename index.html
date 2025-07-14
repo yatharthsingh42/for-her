@@ -2,144 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Happy Birthday Ojasvi 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Ojasvi 🎂</title>
   <link rel="stylesheet" href="index.css" />
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #fffaf7, #ffe4ec);
-      font-family: 'Georgia', serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      overflow: hidden;
-      position: relative;
-    }
-
-    #tsparticles {
-      position: fixed;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
-    }
-
-    #birthdayText {
-      z-index: 2;
-      font-size: 3rem;
-      text-align: center;
-      margin: 0;
-      color: #d86f9b;
-      transition: transform 0.3s ease, text-shadow 0.3s ease;
-      cursor: pointer;
-      padding: 20px;
-    }
-
-    #birthdayText.hovered {
-      transform: scale(1.05);
-      text-shadow: 0 0 15px #ffb6c1;
-    }
-
-    .start-btn {
-      margin-top: 30px;
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      background: #ffd1dc;
-      color: #5e3a55;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      z-index: 2;
-    }
-
-    .start-btn:hover {
-      background: #ffc1d4;
-      transform: scale(1.05);
-      box-shadow: 0 0 10px #ffcce4;
-    }
-
-    .start-btn:active {
-      transform: scale(0.95);
-      box-shadow: 0 0 15px #ffaad4;
-    }
-  </style>
 </head>
 <body>
 
-  <!-- 🌸 Background Particles -->
+  <!-- 🌸 Background Particles Placeholder -->
   <div id="tsparticles"></div>
 
-  <!-- 🎂 Birthday Message -->
-  <h1 id="birthdayText">Happy Birthday, My Love 🎂</h1>
+  <!-- ☁️ Clouds -->
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+  <div class="cloud cloud4"></div>
 
-  <!-- 🎀 Button to Continue -->
-  <button class="start-btn" onclick="startExperience()">Click to Begin the Magic 💖</button>
+  <!-- 🎈 Hot Air Balloon -->
+  <img src="balloon.png" alt="Balloon" class="hot-air-balloon" />
 
-  <!-- 🎉 Confetti on Hover -->
+  <!-- 🪽 Birds -->
+  <div class="heart-bird bird1"></div>
+  <div class="heart-bird bird2"></div>
+  <div class="heart-bird bird3"></div>
+
+  <!-- 🐶 Doggo + Text -->
+  <div class="welcome-box">
+    <div class="dog-wrapper">
+      <img src="golden-retriever.png" alt="Dog" class="dog" />
+    </div>
+    <div class="typewriter">Happy Birthday, My Golden Girl 💖</div>
+    <div class="typewriter-text">I love you so much, Ojasvi. Click below to begin the magic ✨</div>
+    <a href="#" class="enter-btn shimmer" onclick="startExperience()">Click to Begin 💖</a>
+  </div>
+
+  <!-- 🔊 Bark Audio -->
+  <audio id="barkSound" src="bark.mp3" preload="auto"></audio>
+
+  <!-- 🎯 Bark on Hover -->
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const birthdayText = document.getElementById('birthdayText');
+    const dogImage = document.querySelector('.dog');
+    const barkSound = document.getElementById('barkSound');
 
-      birthdayText.addEventListener('mouseenter', () => {
-        confetti({
-          particleCount: 150,
-          spread: 90,
-          origin: { y: 0.6 },
-          colors: ['#ff69b4', '#ffc0cb', '#add8e6', '#fff5f8']
-        });
-        birthdayText.classList.add('hovered');
+    if (dogImage) {
+      dogImage.addEventListener('mouseenter', () => {
+        barkSound.currentTime = 0;
+        barkSound.play();
       });
-
-      birthdayText.addEventListener('mouseleave', () => {
-        birthdayText.classList.remove('hovered');
-      });
-    });
-  </script>
-
-  <!-- 💖 tsParticles Config -->
-  <script>
-    tsParticles.load("tsparticles", {
-      fullScreen: { enable: true },
-      particles: {
-        number: { value: 20 },
-        shape: {
-          type: "char",
-          character: {
-            value: ["💖", "🌸", "✨"],
-            font: "Verdana",
-            weight: "400"
-          }
-        },
-        size: { value: 20 },
-        move: {
-          enable: true,
-          speed: 1,
-          direction: "top",
-          outModes: { default: "out" }
-        },
-        opacity: {
-          value: 1,
-          anim: { enable: true, speed: 0.5, opacity_min: 0.3 }
-        }
-      },
-      background: { color: "#fffaf7" }
-    });
-  </script>
-
-  <!-- 🎵 Music and Redirect on Click -->
-  <script>
-    function startExperience() {
-      const audio = new Audio('mia-sebastian-theme.mp3');
-      audio.play();
-
-      setTimeout(() => {
-        window.location.href = "gallery.html";
-      }, 1000); // 1s delay so music starts before redirect
     }
   </script>
 
