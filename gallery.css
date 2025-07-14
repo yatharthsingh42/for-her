@@ -14,12 +14,13 @@ body {
 /* 🖼️ Gallery */
 .gallery-title {
   margin-top: 30px;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: #aa678f;
   text-align: center;
   animation: fadeIn 2s ease;
   z-index: 2;
   position: relative;
+  text-shadow: 1px 1px 4px #ffe9f2;
 }
 
 .gallery-container {
@@ -57,7 +58,7 @@ body {
 .caption {
   position: absolute;
   bottom: 0;
-  background: rgba(255, 240, 247, 0.8);
+  background: rgba(255, 240, 247, 0.85);
   width: 100%;
   text-align: center;
   padding: 12px;
@@ -71,6 +72,26 @@ body {
 
 .gallery-item:hover .caption {
   transform: translateY(0);
+}
+
+/* ✨ Special Final Image Carousel */
+.final-image-container {
+  margin: 60px 0 30px;
+  position: relative;
+  animation: fadeIn 2.5s ease;
+}
+
+.final-image-container img {
+  width: 280px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(255, 182, 193, 0.6);
+  animation: rotateImage 10s linear infinite;
+}
+
+@keyframes rotateImage {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
 }
 
 @keyframes fadeIn {
@@ -90,6 +111,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  animation: fadeIn 0.6s ease;
 }
 
 .modal img {
@@ -97,6 +119,7 @@ body {
   max-height: 80vh;
   border-radius: 20px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  animation: pulse 2s infinite alternate;
 }
 
 #modal-caption {
@@ -105,6 +128,11 @@ body {
   font-size: 1.3rem;
   font-weight: bold;
   text-align: center;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 15px #ffdbe9; }
+  100% { box-shadow: 0 0 25px #ffb6c1; }
 }
 
 /* ✨ Sparkles */
@@ -170,6 +198,7 @@ body {
   border-radius: 20px;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
   z-index: 2;
+  animation: fadeIn 2.5s ease;
 }
 
 .prose-section h2 {
