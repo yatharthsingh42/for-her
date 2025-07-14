@@ -200,6 +200,66 @@ function drawStars() {
 
 drawStars();
 </script>
+<canvas id="heart-canvas"></canvas>
+<script>
+  const heartCanvas = document.getElementById("heart-canvas");
+  const ctx = heartCanvas.getContext("2d");
+  heartCanvas.width = window.innerWidth;
+  heartCanvas.height = window.innerHeight;
+  heartCanvas.style.position = "fixed";
+  heartCanvas.style.top = 0;
+  heartCanvas.style.left = 0;
+  heartCanvas.style.pointerEvents = "none";
+  heartCanvas.style.zIndex = 999;
+
+  const hearts = [];
+
+  window.addEventListener("resize", () => {
+    heartCanvas.width = window.innerWidth;
+    heartCanvas.height = window.innerHeight;
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    for (let i = 0; i < 2; i++) {
+      hearts.push({
+        x: e.clientX + Math.random() * 10 - 5,
+        y: e.clientY + Math.random() * 10 - 5,
+        size: Math.random() * 6 + 4,
+        alpha: 1,
+        speedY: Math.random() * 1 + 0.5
+      });
+    }
+  });
+
+  function draw() {
+    ctx.clearRect(0, 0, heartCanvas.width, heartCanvas.height);
+    for (let i = 0; i < hearts.length; i++) {
+      const h = hearts[i];
+      ctx.save();
+      ctx.globalAlpha = h.alpha;
+      ctx.fillStyle = "#ff77aa";
+      ctx.beginPath();
+      ctx.moveTo(h.x, h.y);
+      ctx.bezierCurveTo(h.x - h.size / 2, h.y - h.size / 2, h.x - h.size, h.y + h.size / 3, h.x, h.y + h.size);
+      ctx.bezierCurveTo(h.x + h.size, h.y + h.size / 3, h.x + h.size / 2, h.y - h.size / 2, h.x, h.y);
+      ctx.fill();
+      ctx.restore();
+
+      h.y -= h.speedY;
+      h.alpha -= 0.02;
+    }
+
+    for (let i = hearts.length - 1; i >= 0; i--) {
+      if (hearts[i].alpha <= 0) {
+        hearts.splice(i, 1);
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+</script>
 
 </body>
 </html>
