@@ -54,9 +54,13 @@ body, html {
 /* 🪽 Flying Heart Birds */
 .heart-bird {
   position: absolute;
-  font-size: 24px;
+  font-size: 28px;
   z-index: 3;
   opacity: 0.8;
+}
+
+.heart-bird::before {
+  content: "🪽";
 }
 
 .bird1 {
@@ -153,6 +157,11 @@ body, html {
 .enter-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
+}
+
+.enter-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 15px #ffaad4;
 }
 
 /* ✨ Shimmer effect */
