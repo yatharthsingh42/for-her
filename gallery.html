@@ -28,6 +28,9 @@
 <div id="tsparticles"></div>
 
 <h1 class="gallery-title">My Visions of You 💫</h1>
+<!-- 💌 Floating Love Note -->
+<div class="floating-note">“You are my favorite place to go when my mind searches for peace.”</div>
+
 
 <!-- 🖼️ 3D Rotating Carousel -->
 <div class="carousel-wrapper">
@@ -41,6 +44,10 @@
     <figure><img src="img7.jpg" alt="7"><figcaption>Your eyes see through me 💫</figcaption></figure>
     <figure><img src="img8.jpg" alt="8"><figcaption>Art and artist both 🎨</figcaption></figure>
   </div>
+</div>
+<div class="carousel-controls">
+  <button onclick="rotateCarouselManual(-1)">←</button>
+  <button onclick="rotateCarouselManual(1)">→</button>
 </div>
 
 <!-- 💖 Final Rotating Picture -->
@@ -92,17 +99,25 @@
 </script>
 
 <script>
-  // Auto rotate carousel
   const carousel = document.getElementById("carousel");
   let angle = 0;
+  let autoRotate = true;
 
   function rotateCarousel() {
-    angle += 0.3;
-    carousel.style.transform = `translateZ(-430px) rotateY(${angle}deg)`;
+    if (autoRotate) {
+      angle += 0.3;
+      carousel.style.transform = `translateZ(-430px) rotateY(${angle}deg)`;
+    }
     requestAnimationFrame(rotateCarousel);
   }
 
   rotateCarousel();
+
+  function rotateCarouselManual(direction) {
+    autoRotate = false;
+    angle += direction * 45;
+    carousel.style.transform = `translateZ(-430px) rotateY(${angle}deg)`;
+  }
 </script>
 
 </body>
